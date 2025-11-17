@@ -1,63 +1,39 @@
-/*En el taller de Santa, los elfos tienen una lista de regalos que desean 
-fabricar y un conjunto limitado de materiales.
+/* Ejercicio 1
+En una tienda hay una lista de nombres de juguetes y una cadena de materiales. Escribe una función que devuelva qué juguetes se pueden fabricar con los materiales disponibles.
+const toys = ['robot', 'muñeca', 'camion'];
+const materials = 'rbotcamun';
+// manufactureToys(toys, materials) debería mostrar ['robot', 'muñeca', 'camion']
+*/
 
-Los regalos son cadenas de texto y los materiales son 
-caracteres. Tu tarea es escribir una función que, dada una lista de regalos 
-y los materiales disponibles, devuelva una lista de los regalos que se pueden fabricar.
+const toys = ['robot', 'muñeca', 'camion'];
+const materials = 'rbotcamuneiñ';
 
-Un regalo se puede fabricar si contamos con todos los materiales necesarios para fabricarlo.
-
-const gifts = ['tren', 'oso', 'pelota']
-const materials = 'tronesa'
-
-manufacture(gifts, materials) // ["tren", "oso"]
-// 'tren' SÍ porque sus letras están en 'tronesa'
-// 'oso' SÍ porque sus letras están en 'tronesa'
-// 'pelota' NO porque sus letras NO están en 'tronesa'
-
-const gifts = ['juego', 'puzzle']
-const materials = 'jlepuz'
-
-manufacture(gifts, materials) // ["puzzle"]
-
-const gifts = ['libro', 'ps5']
-const materials = 'psli'
-
-manufacture(gifts, materials) // [] */
-
-const gifts = ['tren', 'oso', 'pelota'];
-const materials = 'tronesa';
-
-
-function manufacture(gifts, materials) {
-    let craftable = [];
-    gifts.forEach((gift)=>{
-        let count = 0;
-        for (let i = 0; i < gift.length; i++){
-            if (materials.includes(gift.at(i))) {
-                count++;
+function manufactureToys(toys, materials){
+    let craftable = []
+    toys.forEach((toy) => {
+        let count = 0
+        for (let i = 0; i < toy.length; i++){
+            if (materials.includes(toy.at(i))) {
+                count ++
             }
         }
-        if (gift.length === count) {
-            craftable.push(gift);
+        if (toy.length === count ) {
+            craftable.push(toy)
         }
     });
-    console.log(craftable);
+    console.log(craftable)
 }
 
-manufacture(gifts, materials)
+manufactureToys(toys, materials)
 
 
-// Otra forma de hacerlo
-
-const manufacture1 = (gifts, materials) => {
-    const manufacturable =  gifts.filter(g => {
-        for (const letter in g) {
+const manufactureToys1 = (toys, materials) => {
+    const manufacturable = toys.filter(g => {
+        for(const letter in g){
             if (!materials.includes(g[letter])) {
-                return false;
+                return false
             }
         }
-        return true;
-    });
-    console.log(manufacturable)
+    })
+    console(manufacturable)
 }
