@@ -1,4 +1,4 @@
-/* Ejercicio 1
+/* Ejercicio 2
 En una tienda hay una lista de nombres de juguetes y una cadena de materiales. Escribe una función que devuelva qué juguetes se pueden fabricar con los materiales disponibles.
 const toys = ['robot', 'muñeca', 'camion'];
 const materials = 'rbotcamun';
