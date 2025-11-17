@@ -34,6 +34,9 @@ const manufactureToys1 = (toys, materials) => {
                 return false
             }
         }
+        return true
     })
-    console(manufacturable)
+    console.log(manufacturable)
 }
+
+manufactureToys1(toys, materials)

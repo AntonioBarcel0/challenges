@@ -33,6 +33,9 @@ const manufactureWords1 = (words, letters) => {
                 return false 
             }
         }
+        return true
     })
-    console(manufacturable)
+    console.log(manufacturable)
 }
+
+manufactureWords1(words, letters)
