@@ -23,7 +23,10 @@ En el mensaje final no deben quedar paréntesis.
 El nivel máximo de anidamiento es 2. */
 
 
-/* function decode(mensaje) {
+
+
+
+function decode(mensaje) {
     while (mensaje.includes('(')) { //Mientras haya un paréntesis, hago:
         let indiceCierre = mensaje.indexOf(')') //Busco el índice del último paréntesis (izquierda a derecha)
         console.log(indiceCierre)
@@ -38,56 +41,24 @@ El nivel máximo de anidamiento es 2. */
         mensaje = mensaje.substring(0, indiceApertura) + inverso + mensaje.substring(indiceCierre + 1)// Ahora hago que mensaje sea la construcción nueva, que en este caso es substring de mensaje desde 0 hasta indiceApertura + inverso + subtring desde indiceCierre + 1 hasta el final.
     }
     return mensaje;
-} */
-
-// otra forma de hacerlo 
-
-/* const c = decode('sa(u(cla)atn)s')
-console.log(c) // santaclaus
-
-function decode(cadena) {
-    let cadenaNueva = [""];
-
-    for(let letra of cadena) {
-        if(letra !== '(' && letra !== ')'){
-            cadenaNueva[cadenaNueva.length - 1] += letra;
-        } else if (letra === '('){
-            cadenaNueva.push('');
-        } else if (letra === ')'){
-            let contenido = cadenaNueva.pop();
-            let reverse = contenido.split('').reverse().join('');
-            cadenaNueva[cadenaNueva.length - 1] += reverse;
-        }
-    }
-    return cadenaNueva[0];
-} */
-
-function decode(message) {
-    while (message.includes('(')) {
-        message = message.replace(/\(([^()]*)\)/g, (match, content) => {
-            return content.split('').reverse().join('');
-        });
-    }
-    return message;
 }
 
-/*
-\( el caracter ( literal escapado porque ( tiene significado especial en el regex
-( gurpo de captura - guarda lo que coincide dentro
- [^()] cualquier caracter excepto ( y )
- * cero o más veces
-) cierra el grupo de captura
- /) el caracter ) literal 
- g global busca todas las coincidencias, no solo la primera
- */
+// Pruebas
+console.log(decode('hola (odnum)'));        // hola mundo
+console.log(decode('(olleh) (dlrow)!'));   // hello world!
+console.log(decode('sa(u(cla)atn)s'));     // santaclaus
 
 
+function decode1(message) {
+    while (message.includes('(')){
+        message = message.replace(/\(([^()]*)\)/g, (match, content)=> {
+            return content.split('').reverse().join();
+        })
+    }
+    return message;
+} 
 
-const a = decode('hola (odnum)');
-console.log(a); // hola mundo
-
-const b = decode('(olleh) (dlrow)!');
-console.log(b); // hello world!
-
-const c = decode('sa(u(cla)atn)s');
-console.log(c); // santaclaus
+// Pruebas
+console.log(decode1('hola (odnum)'));        // hola mundo
+console.log(decode1('(olleh) (dlrow)!'));   // hello world!
+console.log(decode1('sa(u(cla)atn)s'));     // santaclaus
